@@ -7,7 +7,7 @@ import Footer from '../components/common/footer';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <div className='relative'>
       <Header />
       <Component {...pageProps} />
       <Footer />
