@@ -1,6 +1,7 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import BookList from '../components/container/bookList';
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="">
-        
+        <BookList />
       </main>
     </div>
   )
