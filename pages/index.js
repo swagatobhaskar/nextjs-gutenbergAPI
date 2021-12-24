@@ -1,20 +1,24 @@
-import {useDispatch, useSelector} from 'react-redux';
-import {END} from 'redux-saga';
 import Head from 'next/head';
 import Link from 'next/link';
+import {END} from 'redux-saga';
 
+import BookList from '../components/container/bookList';
 import { fetchBookList } from '../redux/slices/bookListSlice';
 import wrapper from '../redux/store';
 
-export default function Books({booksToPresent}) {
-    //const { results } = useSelector(state => state);
-    console.log("booklist: ", booksToPresent);
-
-    return (
-        <h1 className='text-3xl font-bold underline'>
-            Hello Book Lovers!
-        </h1>
-    )
+export default function Home({booksToPresent}) {
+  return (
+    <div className="">
+      <Head>
+        <title>Gutenberg Library</title>
+        <meta name="description" content="Books from the Gutenberg API" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className="">
+        <BookList bookList={booksToPresent} />
+      </main>
+    </div>
+  )
 }
 
 export const getStaticProps = wrapper.getStaticProps(store => async ({preview}) => {
