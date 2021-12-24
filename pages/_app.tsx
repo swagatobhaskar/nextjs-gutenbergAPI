@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div>
       <Header />
       <BreadCrumb />
-      <Component {...pageProps} className="min-h-full relative" />
+      <Component {...pageProps} />
       <Footer />
     </div>
   )

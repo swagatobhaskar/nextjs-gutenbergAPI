@@ -6,7 +6,7 @@ import BookList from '../components/container/bookList';
 import { fetchBookList } from '../redux/slices/bookListSlice';
 import wrapper from '../redux/store';
 
-export default function Home({booksToPresent}) {
+export default function Home({booksToPresent, nextPageUrl, previousPageUrl}) {
   return (
     <div className="">
       <Head>
@@ -17,6 +17,10 @@ export default function Home({booksToPresent}) {
       <main className="">
         <BookList bookList={booksToPresent} />
       </main>
+      <span>
+        {previousPageUrl ? <a href={previousPageUrl}>Previous</a> : null}
+        <a href={nextPageUrl}>Next</a>
+      </span>
     </div>
   )
 }
@@ -27,6 +31,16 @@ export const getStaticProps = wrapper.getStaticProps(store => async ({preview}) 
     await store.sagaTask.toPromise();
 
     const data = store.getState();
+    
     const booksToPresent = data.bookList.results;
-    return { props: {booksToPresent}, };
+    const nextPageUrl = data.bookList.next;
+    const previousPageUrl = data.bookList.previous;
+
+    return {
+      props: {
+        booksToPresent,
+        nextPageUrl,
+        previousPageUrl
+      }
+    };
 });
