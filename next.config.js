@@ -1,14 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-const { withPlaiceholder } = require("@plaiceholder/next");
-
-// module.exports = {
-//   reactStrictMode: true,
-// }
-
-module.exports = withPlaiceholder({
-  // reactStrictMode: true,
+module.exports = {
+  //reactStrictMode: true,
   images: {
     domains: ['www.gutenberg.org'],
   },
-});
+}
