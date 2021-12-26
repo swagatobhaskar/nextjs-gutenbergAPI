@@ -1,43 +1,34 @@
 import BookListItem from '../presentation/bookListItem';
 import Image from 'next/image';
-
-const Authors = ({book}) => {
-    return (
-        <div>
-            {book.authors.map( author => (
-                <p key={author.name}>{author.name}</p>
-            ))}
-        </div>
-    )
-}
+import Authors from '../presentation/authors';
 
 export default function BookList(props) {
     let {bookList} = props;
     
     if (bookList) {
         return (
-            <div className="mx-auto w-10/12 ">
-                <ul>
-                    {bookList.map(book => (
-                        <li key={book.id} className='h-52 w-3/4 border-1 border-black rounded-md mx-auto my-2 drop-shadow-md'>
-                            <figure className='ml-4 mt-2'>
+            <div className="mx-auto w-9/12">
+                {bookList.map(book => (
+                    <li key={book.id} className='h-52 w-3/4 border-1 border-black rounded-md mx-auto my-5 drop-shadow-md list-none'>
+                        <main className='flex flex-row'>
+                            <figure className='ml-4 mt-2 basis-1/4'>
                                 <Image
                                     src={book.formats['image/jpeg']}
                                     height={190}
                                     width={150}
                                     quality={100}
                                     alt='cover'
-                                />
+                               />
                             </figure>
-                            <h4 className='text-center'>
-                                {book.title}
-                            </h4>
-                            <span>
+                            <div className='basis-11/12'>
+                                <h4 className='text-center font-sans text-xl font-light'>
+                                    {book.title}
+                                </h4>
                                 <Authors book={book} />
-                            </span>
-                        </li>
-                    ))}
-                </ul>
+                            </div>
+                        </main>
+                    </li>
+                ))}
             </div>
         )}
     else {

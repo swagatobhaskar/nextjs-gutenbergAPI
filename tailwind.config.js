@@ -14,6 +14,9 @@ module.exports = {
       borderWidth: {
         '1': '1px',
       },
+      fontSize: {
+        'tiny': '0.68rem',
+      },
     },
   },
   plugins: [],

@@ -8,7 +8,7 @@ import BreadCrumb from '../components/container/breadCrumb';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
       <BreadCrumb />
       <Component {...pageProps} />
