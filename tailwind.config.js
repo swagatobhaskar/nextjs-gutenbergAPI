@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       dropShadow: {
-        '3xl': '4px 5px 2px rgba(0, 0, 0, 0.25)',
+        // right bottom blur rgba
+        '3xl': '2px 3px 2px rgba(0, 0, 0, 0.25)',
       },
       colors: {
         'header-blue': '#235D85',
