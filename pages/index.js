@@ -1,12 +1,19 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import {END} from 'redux-saga';
+import { useState, useEffect } from 'react';
 
 import BookList from '../components/container/bookList';
-import { fetchBookList } from '../redux/slices/bookListSlice';
+import { fetchBookList, fetchPaginatedBookList } from '../redux/slices/bookListSlice';
 import wrapper from '../redux/store';
 
 export default function Home({booksToPresent, nextPageUrl, previousPageUrl}) {
+
+  const handleNextPageClick = () => {
+    console.log("Button clicked");
+    fetchPaginatedBookList(nextPageUrl);
+  }
+
   return (
     <div className="">
       <Head>
@@ -19,7 +26,7 @@ export default function Home({booksToPresent, nextPageUrl, previousPageUrl}) {
       </main>
       <span>
         {previousPageUrl ? <a href={previousPageUrl}>Previous</a> : null}
-        <a href={nextPageUrl}>Next</a>
+        <button onClick={() => handleNextPageClick()}>Next</button>
       </span>
     </div>
   )
@@ -39,7 +46,7 @@ export const getStaticProps = wrapper.getStaticProps(store => async ({preview}) 
     return {
       props: {
         booksToPresent,
-        nextPageUrl,
+        nextPageUrl,  // https://gutendex.com/books/?page=2
         previousPageUrl
       }
     };
