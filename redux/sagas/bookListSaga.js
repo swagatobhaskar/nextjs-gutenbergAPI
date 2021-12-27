@@ -1,7 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import axios from 'axios';
-
 import axiosInstance from '../../utils/baseAxios';
 import { fetchBookList, fetchBookListError, fetchBookListSuccess } from '../slices/bookListSlice';
 

@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-import { fetchPaginatedBookList,fetchBookListError, fetchBookListSuccess } from '../slices/bookListSlice';
+import { fetchPaginatedBookList, fetchBookListError, fetchBookListSuccess } from '../slices/bookListSlice';
 
 export default function* paginatedBookListWatcherSaga() {
     yield takeLatest(fetchPaginatedBookList, paginatedBookListWorkerSaga);
