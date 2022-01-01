@@ -11,13 +11,13 @@ export const bookListSlice = createSlice({
     name: 'bookListSlice',
     initialState,
     reducers: {
-        fetchBookList: (state) => {
+        fetchBookList: (state, action) => {
             // show fetching = true
             return { ...state, fetching: true };
         },
-        fetchPaginatedBookList: (state) => {
-            console.log("Pagination action fired");
-            return { ...state, fetching: true };
+        fetchPaginatedBookList: (state, action) => {
+            console.log("Pagination action fired", action.payload);
+            return { ...state, fetching: true, };
         },
         fetchBookListSuccess: (state, action) => {
             // console.log("result::", resultsArr);

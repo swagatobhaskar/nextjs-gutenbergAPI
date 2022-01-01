@@ -24,7 +24,7 @@ export default function Home({booksToPresent, nextPageUrl, previousPageUrl}) {
       <main className="">
         <BookList bookList={booksToPresent} />
       </main>
-      <span>
+      <span className=''>
         {previousPageUrl ? <a href={previousPageUrl}>Previous</a> : null}
         <button onClick={() => handleNextPageClick()}>Next</button>
       </span>

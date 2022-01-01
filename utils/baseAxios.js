@@ -11,4 +11,7 @@ const axiosInstance = axios.create({
     responseType: 'json',
 });
 
+// Instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// Instance.defaults.withCredentials = true;
+
 export default axiosInstance;
