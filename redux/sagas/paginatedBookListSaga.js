@@ -11,7 +11,7 @@ function getPaginatedBookList(payload) {
     console.log("In axios", payload);
     return axios({
         method: "GET",
-        url: payload.nextPageUrl
+        url: payload
     });
 }
 

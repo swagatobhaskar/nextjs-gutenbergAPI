@@ -16,7 +16,7 @@ export const bookListSlice = createSlice({
             return { ...state, fetching: true };
         },
         fetchPaginatedBookList: (state, action) => {
-            console.log("Pagination action fired", action.payload);
+            console.log("PAGINATION action fired", action.payload);
             return { ...state, fetching: true, };
         },
         fetchBookListSuccess: (state, action) => {
