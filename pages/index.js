@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import {END} from 'redux-saga';
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import BookList from '../components/container/bookList';
 import { fetchBookList, fetchPaginatedBookList } from '../redux/slices/bookListSlice';
@@ -9,9 +10,14 @@ import wrapper from '../redux/store';
 
 export default function Home({booksToPresent, nextPageUrl, previousPageUrl}) {
 
+  // use useSelector to take the new book list only
+  // use useEffect to detect change in nextPageUrl and re-render the list
+
+  const dispatch = useDispatch();
+
   const handleNextPageClick = () => {
     console.log("Button clicked");
-    fetchPaginatedBookList(nextPageUrl);
+    dispatch(fetchPaginatedBookList(nextPageUrl));
   }
 
   return (
