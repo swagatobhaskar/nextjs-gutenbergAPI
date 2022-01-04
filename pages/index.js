@@ -2,39 +2,48 @@ import Head from 'next/head';
 import Link from 'next/link';
 import {END} from 'redux-saga';
 import { useState, useEffect } from 'react';
+import { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import BookList from '../components/container/bookList';
 import { fetchBookList, fetchPaginatedBookList } from '../redux/slices/bookListSlice';
+import Pagination from '../components/presentation/pagination';
 import wrapper from '../redux/store';
 
 export default function Home({booksToPresent, nextPageUrl, previousPageUrl}) {
 
-  // use useSelector to take the new book list only
-  // use useEffect to detect change in nextPageUrl and re-render the list
-
+  const [ renderBookListData, setRenderBookListData ] = useState(booksToPresent);
   const dispatch = useDispatch();
+  
+  const newPaginatedBookList = useSelector( state => state.bookList );
+  console.log("useSelector: ", newPaginatedBookList);
+
+  // gotta use newPaginatedBookList into useEffect somehow, to refresh page with new data
+  useEffect(() => {
+    setRenderBookListData(booksToPresent);
+  }, [nextPageUrl, booksToPresent])
 
   const handleNextPageClick = () => {
-    console.log("Button clicked");
     dispatch(fetchPaginatedBookList(nextPageUrl));
   }
 
   return (
-    <div className="">
+    <Fragment>
       <Head>
         <title>Gutenberg Library</title>
         <meta name="description" content="Books from the Gutenberg API" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="">
-        <BookList bookList={booksToPresent} />
+      <main className="mx-auto w-9/12">
+        <BookList bookList={renderBookListData} />
       </main>
-      <span className=''>
-        {previousPageUrl ? <a href={previousPageUrl}>Previous</a> : null}
-        <button onClick={() => handleNextPageClick()}>Next</button>
-      </span>
-    </div>
+      <Pagination
+        previousPageUrl={previousPageUrl}
+        nextPageUrl={nextPageUrl}
+        nextPageClick={handleNextPageClick}
+        // add previousPageClick later
+      />
+    </Fragment>
   )
 }
 
