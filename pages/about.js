@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Head from 'next/head';
+import { Fragment } from 'react';
 
 export default function aboutPage() {
 
     return (
-        <div>
+        <Fragment>
             <Head>
                 <title>Gutenberg Library | About</title>
                 <meta name="description" content="About Books from the Gutenberg API" />
@@ -25,6 +26,6 @@ export default function aboutPage() {
                     Hi, I'm Swagato Bhaskar. A developer from India.
                 </p>
             </main>
-        </div>
+        </Fragment>
     )
 }
