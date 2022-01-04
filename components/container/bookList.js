@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
-import BookListItem from '../presentation/bookListItem';
 import Authors from '../presentation/authors';
 
 export default function BookList(props) {
@@ -9,7 +8,7 @@ export default function BookList(props) {
     
     if (bookList) {
         return (
-            <div className="mx-auto w-9/12">
+            <div className="">
                 {bookList.map(book => (
                     <li key={book.id} className='h-52 w-3/4 border-1 border-slate-400 rounded-md mx-auto my-5 drop-shadow-3xl shadow-lg list-none'>
                         <main className='flex flex-row'>
@@ -27,6 +26,11 @@ export default function BookList(props) {
                                     {book.title}
                                 </h4>
                                 <Authors book={book} />
+                            </div>
+                            <div className=''>
+                                <p className=''>
+                                    {book.bookshelves}
+                                </p>
                             </div>
                         </main>
                     </li>
