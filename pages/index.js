@@ -1,31 +1,12 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import {END} from 'redux-saga';
-import { useState, useEffect } from 'react';
 import { Fragment } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 import BookList from '../components/container/bookList';
-import { fetchBookList, fetchPaginatedBookList } from '../redux/slices/bookListSlice';
-import Pagination from '../components/presentation/pagination';
+import { fetchBookList } from '../redux/slices/bookListSlice';
 import wrapper from '../redux/store';
 
-export default function Home({booksToPresent, nextPageUrl, previousPageUrl}) {
-
-  const [ renderBookListData, setRenderBookListData ] = useState(booksToPresent);
-  const dispatch = useDispatch();
-  
-  const newPaginatedBookList = useSelector( state => state.bookList );
-  console.log("useSelector: ", newPaginatedBookList);
-
-  // gotta use newPaginatedBookList into useEffect somehow, to refresh page with new data
-  useEffect(() => {
-    setRenderBookListData(booksToPresent);
-  }, [nextPageUrl, booksToPresent])
-
-  const handleNextPageClick = () => {
-    dispatch(fetchPaginatedBookList(nextPageUrl));
-  }
+export default function Home({booksToPresent}) {
 
   return (
     <Fragment>
@@ -35,14 +16,8 @@ export default function Home({booksToPresent, nextPageUrl, previousPageUrl}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mx-auto w-9/12">
-        <BookList bookList={renderBookListData} />
+        <BookList bookList={booksToPresent} />
       </main>
-      <Pagination
-        previousPageUrl={previousPageUrl}
-        nextPageUrl={nextPageUrl}
-        nextPageClick={handleNextPageClick}
-        // add previousPageClick later
-      />
     </Fragment>
   )
 }
@@ -51,18 +26,13 @@ export const getStaticProps = wrapper.getStaticProps(store => async ({preview}) 
     store.dispatch(fetchBookList());
     store.dispatch(END);
     await store.sagaTask.toPromise();
-
-    const data = store.getState();
     
-    const booksToPresent = data.bookList.results;
-    const nextPageUrl = data.bookList.next;
-    const previousPageUrl = data.bookList.previous;
+    const apiData = store.getState();    
+    const booksToPresent = apiData.bookList;
 
     return {
       props: {
-        booksToPresent,
-        nextPageUrl,  // https://gutendex.com/books/?page=2
-        previousPageUrl
+        booksToPresent // https://gutendex.com/books/?page=2
       }
     };
 });
