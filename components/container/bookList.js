@@ -1,47 +1,51 @@
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { Fragment } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import Authors from '../presentation/authors';
+import { fetchPaginatedBookList } from '../../redux/slices/bookListSlice';
+import BookListItem from '../presentation/bookListItem';
+import Pagination from '../presentation/pagination';
 
-export default function BookList(props) {
-    let {bookList} = props;
-    
-    if (bookList) {
+export default function BookList({bookList}) {
+    console.log("BOOKLIST::", bookList);
+
+    const newPaginatedBookList = useSelector( state => state.bookList );
+    console.log("useSelector: ", newPaginatedBookList);
+
+    const [ renderBookListData, setRenderBookListData ] = useState(newPaginatedBookList || booksToPresent);
+    const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     setRenderBookListData(newPaginatedBookList);
+    // }, [newPaginatedBookList])
+
+    const handleNextPageClick = () => {
+        dispatch(fetchPaginatedBookList(nextPageUrl));
+    }
+
+    if (newPaginatedBookList) {
         return (
-            <div className="">
-                {bookList.map(book => (
-                    <li key={book.id} className='h-52 w-3/4 border-1 border-slate-400 rounded-md mx-auto my-5 drop-shadow-3xl shadow-lg list-none'>
-                        <main className='flex flex-row'>
-                            <figure className='ml-4 mt-2 basis-1/4'>
-                                <Image
-                                    src={book.formats['image/jpeg']}
-                                    height={190}
-                                    width={150}
-                                    quality={100}
-                                    alt='cover'
-                               />
-                            </figure>
-                            <div className='basis-11/12'>
-                                <h4 className='px-5 text-left font-sans text-xl font-light'>
-                                    {book.title}
-                                </h4>
-                                <Authors book={book} />
-                            </div>
-                            <div className=''>
-                                <p className=''>
-                                    {book.bookshelves}
-                                </p>
-                            </div>
-                        </main>
-                    </li>
-                ))}
-            </div>
+            <Fragment>
+                <div className="">
+                    {newPaginatedBookList.results.map(book => (
+                        <li key={book.id} className='h-52 w-3/4 border-1 border-slate-400 rounded-md mx-auto my-5 drop-shadow-3xl shadow-lg list-none'>
+                           <BookListItem book={book} /> 
+                        </li>
+                    ))}
+                </div>
+                <Pagination
+                    previousPageUrl={newPaginatedBookList.previous}
+                    nextPageUrl={newPaginatedBookList.next}
+                    nextPageClick={handleNextPageClick}
+                    // add previousPageClick later
+                />
+            </Fragment>
         )}
     else {
         return (
-            <main>
-                <h2>Oops!</h2>
-                <p>Something went wrong!</p>
+            <main className='m-auto my-16 w-2/5 border-1 p-5 rounded-sm border-amber-800 shadow-xl shadow-amber-700/20 bg-orange-50 flex flex-col items-center'>
+                <h2 className='text-amber-600 font-semibold text-2xl'>Oops...</h2>
+                <p className='text-amber-700 font-semibold text-lg'>Something went wrong!</p>
             </main>
         )
     }
