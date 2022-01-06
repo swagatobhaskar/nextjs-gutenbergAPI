@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import Image from 'next/image';
 
 import Authors from './authors';
+import Link from "next/link";
 
 export default function BookListItem({book}) {
 
@@ -18,9 +19,17 @@ export default function BookListItem({book}) {
                     />
                 </figure>
                 <div className='basis-11/12'>
-                    <h4 className='px-5 text-left font-sans text-xl font-light'>
-                        {book.title}
-                    </h4>
+                    <Link
+                        href={{
+                            pathname: '/books/[id]',
+                            query: { id: book.id },                            
+                        }}
+                        passHref
+                    >
+                        <a className='px-5 text-left font-sans text-xl font-light'>
+                            {book.title}
+                        </a>
+                    </Link>
                     <Authors book={book} />
                 </div>
                 <div className=''>
