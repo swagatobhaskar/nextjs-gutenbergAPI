@@ -8,7 +8,6 @@ export default function* paginatedBookListWatcherSaga() {
 }
 
 function getPaginatedBookList(payload) {
-    console.log("In axios", payload);
     return axios({
         method: "GET",
         url: payload
