@@ -31,16 +31,14 @@ export default function BookList({bookList}) {
     if (renderBookListData.results) {
         return (
             <Fragment>
-                <div className="">
-                    {renderBookListData.results.map(book => (
-                        <li
-                            key={book.id}
-                            className='h-52 w-3/4 border-1 border-slate-400 rounded-md mx-auto my-5 drop-shadow-3xl shadow-lg list-none'
-                        >
-                           <BookListItem book={book} /> 
-                        </li>
-                    ))}
-                </div>
+                {renderBookListData.results.map(book => (
+                    <li
+                        key={book.id}
+                        className='h-52 w-3/4 border-1 border-slate-400 rounded-md mx-auto my-5 drop-shadow-3xl shadow-lg list-none'
+                    >
+                       <BookListItem book={book} /> 
+                    </li>
+                ))}
                 <Pagination
                     previousPageUrl={renderBookListData.previous}
                     nextPageUrl={renderBookListData.next}
