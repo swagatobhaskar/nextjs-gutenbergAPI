@@ -11,7 +11,7 @@ export default function Header() {
                 </Link>
                 <div className='flex items-center'>
                     <Link href="/about" passHref as={"/about"}>
-                        <a className='py-1 px-2 border-2 border-blue-700 hover:bg-blue-600'>
+                        <a className='py-1 px-2 border-2 border-blue-700 hover:bg-blue-600 active:bg-blue-800'>
                             About
                         </a>
                     </Link>
