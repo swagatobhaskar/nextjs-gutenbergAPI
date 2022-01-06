@@ -23,7 +23,7 @@ export default function aboutPage() {
                     />
                 </figure>
                 <p className='mx-auto w-4/5 indent-4 text-justify leading-relaxed tracking-wide font-mono text-sm font-thin text-blue-800'>
-                    Hi, I'm Swagato Bhaskar. A developer from India.
+                    Hi, I&apos;m Swagato Bhaskar. A developer from India.
                 </p>
             </main>
         </Fragment>
