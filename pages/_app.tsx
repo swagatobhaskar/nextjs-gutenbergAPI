@@ -2,8 +2,8 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 
 import wrapper from '../redux/store';
-import Header from '../components/presentation/header';
-import Footer from '../components/presentation/footer';
+import Header from '../components/common/header';
+import Footer from '../components/common/footer';
 import BreadCrumb from '../components/container/breadCrumb';
 
 function MyApp({ Component, pageProps }: AppProps) {

@@ -12,7 +12,7 @@ export default function aboutPage() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className='w-2/3 m-auto'>
-                <figure className='mx-auto mt-10 w-max'>
+                <figure className='mx-auto my-auto w-max'>
                     <Image
                         src='/swagato.jpg'
                         height={250}
