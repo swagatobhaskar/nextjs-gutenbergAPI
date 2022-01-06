@@ -24,6 +24,10 @@ export default function BookList({bookList}) {
         dispatch(fetchPaginatedBookList(renderBookListData.next));
     }
 
+    const handlePreviousPageClick = () => {
+        dispatch(fetchPaginatedBookList(renderBookListData.previous));
+    }
+
     if (renderBookListData.results) {
         return (
             <Fragment>
@@ -41,7 +45,7 @@ export default function BookList({bookList}) {
                     previousPageUrl={renderBookListData.previous}
                     nextPageUrl={renderBookListData.next}
                     nextPageClick={handleNextPageClick}
-                    // add previousPageClick later
+                    previousPageClick={handlePreviousPageClick}
                 />
             </Fragment>
         )
