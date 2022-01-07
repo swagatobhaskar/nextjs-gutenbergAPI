@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from "next/link";
 
 import Authors from './authors';
+import Bookshelves from './bookshelves';
 
 export default function BookListItem({book}) {
 
@@ -21,24 +22,17 @@ export default function BookListItem({book}) {
                 <div className="flex-col m-2 basis-11/12 px-5 py-2">
                     <Link
                         href={{
-                            pathname: '/books/[id]',
+                            pathname: '/book/[id]',
                             query: { id: book.id },                            
                         }}
-                        passHref
                     >
                         <a className='text-left font-sans text-xl font-light'>
                             {book.title}
                         </a>
                     </Link>
-                    <Authors book={book} />
+                    <Authors authorList={book.authors} borderBottom={true} />
                     <h5 className="text-gray-500 font-normal">Bookshelves:</h5>
-                    <ul className='leading-tight grid grid-rows-4 grid-cols-2'>
-                        {book.bookshelves.map(shelf => (
-                            <li key={shelf} className="pl-2">
-                                <p className="text-sm font-extralight">{shelf}</p>
-                            </li>
-                        ))}
-                    </ul>
+                    <Bookshelves shelveList={book.bookshelves} linear={false} />
                 </div>
             </main>
         </Fragment>
