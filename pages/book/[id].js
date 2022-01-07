@@ -5,6 +5,10 @@ import Image from 'next/image';
 import axiosInstance from '../../utils/baseAxios';
 import Authors from '../../components/presentation/authors';
 import Bookshelves from '../../components/presentation/bookshelves';
+import Translators from '../../components/presentation/translators';
+import Formats from '../../components/presentation/formats';
+import Languages from '../../components/presentation/languages';
+import Subjects from '../../components/presentation/subjects';
 
 export default function Book({book}) {
     return (
@@ -17,7 +21,6 @@ export default function Book({book}) {
                 {/* Genral details */}
                 <div className='basis-7/12'>
                     <h3>{book.title}</h3>
-                    {/* Authors */}
                     <Authors authorList={book.authors} borderBottom={false} />
                     {/* Bookshelves */}
                     <div className=''>
@@ -30,43 +33,25 @@ export default function Book({book}) {
                         {/* Languages */}
                         <div>
                             <h6>Languages</h6>
-                            {book.languages.map(lang => (
-                                <li key={lang} className='list-none'>{lang}</li>
-                            ))}
+                            <Languages languages={book.languages} />
                         </div>
                         {/* Translators */}
                         <div>
                             <h6>Translators</h6>
-                            {book.translators.length === 0 ? <p>None</p> : (
-                                <div>
-                                    {book.translators.map(lang => (
-                                        <li key={lang} className='list-none'>{lang}</li>
-                                    ))}
-                                </div>
-                            )}
+                            <Translators translators={book.translators} />
                         </div>
                     </div>
                     <hr className='border-1 border-cyan-400/50'/>
                     {/* Subjects */}
                     <div className=''>
-                        {book.subjects.map(sub => (
-                            <li key={sub} className=''>{sub}</li>
-                        ))}
+                        <h5>Subjects</h5>
+                        <Subjects subjects={book.subjects} />
                     </div>
                     <hr className='border-1 border-cyan-400/50'/>
                     {/* Formats */}
                     <div className='mt-2'>
                         <h6 className=''>Links</h6>
-                        {/* Since formats is coming as Object not array, used Object.entries().map() */}
-                        {Object.entries(book.formats).map(([key, value]) => (
-                            <a
-                                key={key}
-                                href={value}
-                                className=''
-                            >
-                                {key}
-                            </a>
-                        ))}
+                        <Formats formatObject={book.formats} />
                     </div>
                 </div>
                 {/* Cover image */}
