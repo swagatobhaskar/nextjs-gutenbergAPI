@@ -11,14 +11,14 @@ import Languages from '../../components/presentation/languages';
 import Subjects from '../../components/presentation/subjects';
 
 export default function Book({book}) {
-    console.log(book);
+    
     return (
         <Fragment>
             <Head>
                 <title>{book.title}</title>
                 <meta name="description" content="Details for book" />
             </Head>
-            <main className='mx-auto my-12 w-8/12 flex flex-row justify-between'>
+            <main className='mx-auto my-12 w-8/12 flex flex-row justify-between bg-red-100/80'>
                 {/* Genral details */}
                 <div className='basis-3/4 p-5'>
                     <h2 className='prop--title'>{book.title}</h2>
@@ -37,14 +37,20 @@ export default function Book({book}) {
                     <hr className='st--line'/>
                     {/* Formats */}
                     <Formats formatObject={book.formats} />
+                    <hr className='st--line'/>
                 </div>
                 {/* Cover image */}
                 <div className='basis-1/4 p-5 flex flex-col justify-around'>
                     <div className=''>
-                        <p className='prop--title-secondary'>Download count: <span className='text-xs text-black'>{book.download_count}</span></p>
+                        <p
+                            className='prop--title-secondary'
+                        >
+                            Download count: 
+                            <span className="text-xs font-normal before:content-[''] text-black">{book.download_count}</span>
+                        </p>
                         <p className='prop--title-secondary'>
                             Copyrighted: {book.copyright === false ? (
-                                <span className='text-xs text-black'>No</span>
+                                <span className='text-xs font-normal text-black'>No</span>
                             ):(
                                 <span>{book.copyright}</span>
                             )}
@@ -53,8 +59,8 @@ export default function Book({book}) {
                     <figure className='align-left'>
                         <Image
                             src={book.formats['image/jpeg']}
-                            height={190}
-                            width={150}
+                            height={210}
+                            width={180}
                             quality={100}
                             alt='cover'
                         />

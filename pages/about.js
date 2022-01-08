@@ -14,7 +14,7 @@ export default function aboutPage() {
             <main className='w-2/3 m-auto'>
                 <figure className='mx-auto my-auto w-max'>
                     <Image
-                        src='/swagato.jpg'
+                        src='/me.jpg'
                         height={250}
                         width={250}
                         alt="swagato"
