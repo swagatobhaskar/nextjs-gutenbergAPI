@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* re-using styles */
+.prop--title {
+  @apply font-semibold text-xl text-gray-700;
+}
+
+.prop--title-secondary {
+  @apply font-semibold text-sm text-gray-500;
+}
+
+.link--hover:hover {
+  @apply underline decoration-1 text-blue-400;
+}
+
+.link--visited:visited {
+  @apply decoration-inherit text-cyan-800;
+}
+
+.st--line {
+  @apply mr-10 border-1 border-cyan-400/50;
+}
+
 /*
 html,
 body {

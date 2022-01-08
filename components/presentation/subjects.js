@@ -1,9 +1,10 @@
 
 export default function Subjects({subjects}) {
     return (
-        <div className="">
+        <div className="mt-2 list-none">
+            <h5 className="prop--title-secondary">Subjects</h5>
             {subjects.map(sub => (
-                <li key={sub} className=''>{sub}</li>
+                <li key={sub} className='text-xs'>{sub}</li>
             ))}
         </div>
     )

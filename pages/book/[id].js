@@ -11,54 +11,46 @@ import Languages from '../../components/presentation/languages';
 import Subjects from '../../components/presentation/subjects';
 
 export default function Book({book}) {
+    console.log(book);
     return (
         <Fragment>
             <Head>
                 <title>{book.title}</title>
                 <meta name="description" content="Details for book" />
             </Head>
-            <main className='flex flex-row mx-auto my-12 w-8/12'>
+            <main className='mx-auto my-12 w-8/12 flex flex-row justify-between'>
                 {/* Genral details */}
-                <div className='basis-7/12'>
-                    <h3>{book.title}</h3>
+                <div className='basis-3/4 p-5'>
+                    <h2 className='prop--title'>{book.title}</h2>
                     <Authors authorList={book.authors} borderBottom={false} />
                     {/* Bookshelves */}
-                    <div className=''>
-                        <h6>Places in bookshelves</h6>
-                        <Bookshelves shelveList={book.bookshelves} linear={true} />
-                    </div>
-                    <hr className='border-1 border-cyan-400/50'/>
+                    <Bookshelves shelveList={book.bookshelves} linear={true} />
+                    <hr className='st--line'/>
                     {/* Languages and translators */}
                     <div className='mt-2 flex flex-row justify-between'>
-                        {/* Languages */}
-                        <div>
-                            <h6>Languages</h6>
-                            <Languages languages={book.languages} />
-                        </div>
-                        {/* Translators */}
-                        <div>
-                            <h6>Translators</h6>
-                            <Translators translators={book.translators} />
-                        </div>
+                        <Languages languages={book.languages} />
+                        <Translators translators={book.translators} />
                     </div>
-                    <hr className='border-1 border-cyan-400/50'/>
+                    <hr className='st--line'/>
                     {/* Subjects */}
-                    <div className=''>
-                        <h5>Subjects</h5>
-                        <Subjects subjects={book.subjects} />
-                    </div>
-                    <hr className='border-1 border-cyan-400/50'/>
+                    <Subjects subjects={book.subjects} />
+                    <hr className='st--line'/>
                     {/* Formats */}
-                    <div className='mt-2'>
-                        <h6 className=''>Links</h6>
-                        <Formats formatObject={book.formats} />
-                    </div>
+                    <Formats formatObject={book.formats} />
                 </div>
                 {/* Cover image */}
-                <div className=''>
-                    <p>Download count: {book.download_count}</p>
-                    <p>Copyrighted: {book.copyright}</p>
-                    <figure className=''>
+                <div className='basis-1/4 p-5 flex flex-col justify-around'>
+                    <div className=''>
+                        <p className='prop--title-secondary'>Download count: <span className='text-xs text-black'>{book.download_count}</span></p>
+                        <p className='prop--title-secondary'>
+                            Copyrighted: {book.copyright === false ? (
+                                <span className='text-xs text-black'>No</span>
+                            ):(
+                                <span>{book.copyright}</span>
+                            )}
+                        </p>
+                    </div>
+                    <figure className='align-left'>
                         <Image
                             src={book.formats['image/jpeg']}
                             height={190}

@@ -12,8 +12,8 @@ const Authors = ({authorList, borderBottom}) => {
                         </div>
                     ) : (
                         <div className="flex flex-col">
-                            <p className='font-sans font-light text-sm'>{author.name}</p>
-                            <p className='font-sans font-light text-tiny text-center'>{author.birth_year} - {author.death_year}</p>
+                            <p className='font-sans font-normal text-sm'>{author.name}</p>
+                            <p className='font-sans font-normal text-tiny text-center'>{author.birth_year} - {author.death_year}</p>
                         </div>
                     )}
                 </li>
