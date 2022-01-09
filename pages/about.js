@@ -11,15 +11,15 @@ export default function aboutPage() {
                 <meta name="description" content="About Books from the Gutenberg API" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className='w-2/3 m-auto'>
+            <main className='w-2/3 h-auto m-auto'>
                 <figure className='mx-auto my-auto w-max'>
                     <Image
                         src='/me.jpg'
-                        height={250}
-                        width={250}
-                        alt="swagato"
+                        height={280}
+                        width={300}
+                        alt="me"
                         loading='eager'
-                        className='rounded-full'
+                        className='rounded-full overflow-visible'
                     />
                 </figure>
                 <p className='mx-auto w-4/5 indent-4 text-justify leading-relaxed tracking-wide font-mono text-sm font-thin text-blue-800'>
