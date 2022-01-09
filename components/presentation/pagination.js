@@ -1,7 +1,7 @@
 export default function Pagination({previousPageUrl, previousPageClick, nextPageClick}) {
 
     return (
-        <div className='mx-auto mb-3 w-2/5 h-10 flex flex-row'>
+        <div className='mx-auto mb-3 w-4/5 md:w-2/5 h-8 md:h-10 flex flex-row'>
             {previousPageUrl ? (
                 <button
                     onClick={() => previousPageClick()}

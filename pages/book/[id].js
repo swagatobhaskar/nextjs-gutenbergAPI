@@ -18,7 +18,7 @@ export default function Book({book}) {
                 <title>{book.title}</title>
                 <meta name="description" content="Details for book" />
             </Head>
-            <main className='mx-auto my-12 w-8/12 flex flex-row justify-between bg-red-100/80'>
+            <main className='md:mx-auto my-2 md:my-12 w-11/12 md:w-8/12 flex flex-col md:flex-row justify-between bg-red-100/70 rounded-md'>
                 {/* Genral details */}
                 <div className='basis-3/4 p-5'>
                     <h2 className='prop--title'>{book.title}</h2>
@@ -46,7 +46,8 @@ export default function Book({book}) {
                             className='prop--title-secondary'
                         >
                             Download count: 
-                            <span className="text-xs font-normal before:content-[''] text-black">{book.download_count}</span>
+                            {/* '\00a0' is the unicode character for space */}
+                            <span className="text-xs font-normal before:content-['\00a0'] text-black">{book.download_count}</span>
                         </p>
                         <p className='prop--title-secondary'>
                             Copyrighted: {book.copyright === false ? (
@@ -56,13 +57,14 @@ export default function Book({book}) {
                             )}
                         </p>
                     </div>
-                    <figure className='align-left'>
+                    <figure className='align-left '>
                         <Image
                             src={book.formats['image/jpeg']}
                             height={210}
                             width={180}
                             quality={100}
                             alt='cover'
+                            className=''
                         />
                     </figure>
                 </div>

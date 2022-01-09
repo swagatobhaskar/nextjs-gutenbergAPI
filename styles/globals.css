@@ -4,11 +4,11 @@
 
 /* re-using styles */
 .prop--title {
-  @apply font-semibold text-xl text-gray-700;
+  @apply font-semibold text-sm md:text-xl text-gray-700;
 }
 
 .prop--title-secondary {
-  @apply font-semibold text-sm text-gray-500;
+  @apply font-semibold text-xs md:text-sm text-gray-500;
 }
 
 .link--hover:hover {
@@ -20,7 +20,7 @@
 }
 
 .st--line {
-  @apply mt-1 mr-10 border-1 border-cyan-400/50;
+  @apply mt-1 mr-0 md:mr-10 border-1 border-cyan-400/50;
 }
 
 /*

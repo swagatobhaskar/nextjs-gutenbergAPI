@@ -15,7 +15,7 @@ export default function Home({booksToPresent}) {
         <meta name="description" content="Books from the Gutenberg API" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="mx-auto w-9/12">
+      <main className="mx-auto w-11/12 md:w-9/12">
         <BookList bookList={booksToPresent} />
       </main>
     </Fragment>

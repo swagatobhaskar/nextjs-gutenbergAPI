@@ -23,7 +23,8 @@ export default function aboutPage() {
                     />
                 </figure>
                 <p className='mx-auto w-4/5 indent-4 text-justify leading-relaxed tracking-wide font-mono text-sm font-thin text-blue-800'>
-                    Hi, I&apos;m Swagato Bhaskar. A developer from India.
+                    Hi, I&apos;m Swagato Bhaskar. A developer from India. Find the project here at &nbsp;
+                    <a href='https://github.com/swagatobhaskar/nextjs-gutenbergAPI' target='_blank' rel="noreferrer" className='link--hover link--visited'>github</a>.
                 </p>
             </main>
         </Fragment>
