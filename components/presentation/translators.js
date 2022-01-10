@@ -5,8 +5,8 @@ export default function Translators({translators}) {
             <h6 className="prop--title-secondary">Translators</h6>
             {translators.length === 0 ? <p className="text-xs">None</p> : (
                 <div>
-                    {translators.map(lang => (
-                        <li key={lang} className='text-xs list-none'>{lang}</li>
+                    {translators.map(person => (
+                        <li key={person.name} className='text-xs list-none'>{person.name}</li>
                     ))}
                 </div>
             )}
