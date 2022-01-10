@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import axiosInstance from '../../utils/baseAxios';
 import Authors from '../../components/presentation/authors';
@@ -12,6 +13,14 @@ import Subjects from '../../components/presentation/subjects';
 
 export default function Book({book}) {
     
+    const router = useRouter();
+
+    // If the page is not yet generated, this will be displayed
+    // initially until getStaticProps() finishes running
+    if (router.isFallback) {
+        return <div className='w-screen h-screen font-light text-gray-500'>Loading...</div>
+    }
+
     return (
         <Fragment>
             <Head>
@@ -21,7 +30,7 @@ export default function Book({book}) {
             <main className='md:mx-auto my-2 md:my-12 w-11/12 md:w-8/12 flex flex-col md:flex-row justify-between bg-red-100/70 rounded-md'>
                 {/* Genral details */}
                 <div className='basis-3/4 p-5'>
-                    <h2 className='prop--title'>{book.title}</h2>
+                    <h2 className='prop--title'>{book.title ? book.title : null}</h2>
                     <Authors authorList={book.authors} borderBottom={false} />
                     {/* Bookshelves */}
                     <Bookshelves shelveList={book.bookshelves} linear={true} />
