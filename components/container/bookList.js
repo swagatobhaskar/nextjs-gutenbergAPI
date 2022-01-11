@@ -34,7 +34,7 @@ export default function BookList({bookList}) {
                 {renderBookListData.results.map(book => (
                     <li
                         key={book.id}
-                        className='h-min md:h-52 md:w-3/4 border-1 border-slate-400 rounded-sm md:rounded-md mx-auto my-4 md:my-5 drop-shadow-md md:drop-shadow-3xl shadow-lg list-none'
+                        className='h-min md:h-52 md:w-3/4 border-1 border-slate-400 rounded-sm md:rounded-md mx-auto my-4 md:my-5 drop-shadow-md md:drop-shadow-3xl shadow-md list-none'
                     >
                        <BookListItem book={book} /> 
                     </li>
