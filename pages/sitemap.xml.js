@@ -1,18 +1,10 @@
-//import { globby } from 'globby';
+//import { globby } from 'globby'
+//import unixify from 'unixify';
 
 const EXTERNAL_DATA_URL = 'https://gutendex.com/books/'
 
 function generateSiteMap(books) {
   
-  // const pages = await globby([
-  //   'pages/*.js',
-  //   'data/**/*.mdx',
-  //   '!data/*.mdx',
-  //   '!pages/_*.js',
-  //   '!pages/api',
-  //   '!pages/404.js'
-  // ]);
-
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
@@ -58,20 +50,3 @@ export async function getServerSideProps({ res }) {
 }
 
 export default SiteMap
-
-// ${pages
-//   .map((page) => {
-//     const path = page
-//       .replace('pages', '')
-//       .replace('data', '')
-//       .replace('.js', '')
-//       .replace('.mdx', '');
-//     const route = path === '/index' ? '' : path;
-
-//   return `
-//   <url>
-//     <loc>${`${process.env.NEXT_PUBLIC_URL}/${route}`}</loc>
-//   </url>
-//   `
-// })
-// .join('')}

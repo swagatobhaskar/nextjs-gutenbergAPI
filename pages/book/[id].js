@@ -83,28 +83,28 @@ export default function Book({book}) {
 }
 
 export async function getStaticPaths() {
-    /**
-    * There are 2095 pages in the end-point https://gutendex.com/books/?page={page_no}
-    * And a total of 67012 books.
-    * Querying only for the first page.
-    */
-
-    /*
+    
     let bookPages = [];
-    for (let pageNo = 1; pageNo=2; pageNo ++) {
-        const res = await axiosInstance.get(`/?page=${pageNo}`);
-        const listResultsArray = await res.data.results;
-        bookPages.push(listResultsArray);
-    }
-    */
+    let links = [
+        '/?page=1',
+        '/?page=2',
+        '/?page=3',
+        '/?page=4',
+        '/?page=5',
+    ];
+    // for (let paginate=1; paginate=5; paginate++) {
+    //     links.push(`${process.env.NEXT_PUBLIC_URL}?page=${paginate}/`);
+    // }
+    let requests = links.map(url => axiosInstance.get(url));
+    Promise.all(requests)
+        .then(responses => responses.forEach(
+            response => bookPages.push(response.data.results)
+        ));
 
-    const res = await axiosInstance.get('/?page=1');
-    const resultsArray = await res.data.results;
-
-    const paths = resultsArray.map((book) => ({
+    const paths = bookPages.map((book) => ({
         params: { id: book.id.toString() },
     }))
-    // { fallback: false } means other routes should 404.   
+    
     return { paths, fallback: true }
 }
 
