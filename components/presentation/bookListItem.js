@@ -9,9 +9,9 @@ export default function BookListItem({book}) {
 
     return (
         <Fragment>
-            <main className='flex flex-col md:flex-row'>
+            <main className='flex flex-col md:flex-row relative'>
                 {/* Hide image in small screen */}
-                <figure className='hidden md:ml-4 md:my-2 md:flex md:justify-center md:basis-1/4'>
+                <figure className='my-1 md:ml-4 md:my-2 flex justify-center md:basis-1/4'>
                     <Image
                         src={book.formats['image/jpeg']}
                         height="190"
